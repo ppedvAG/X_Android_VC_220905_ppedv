@@ -64,17 +64,17 @@ namespace X_Android
             int hoehe = int.Parse(EdT_Height.Text);
 
             //Initialisieren des ProgressDialogs
-            ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.SetMessage("Downloading Picture...");
+            //ProgressDialog progressDialog = new ProgressDialog(this);
+            //progressDialog.SetMessage("Downloading Picture...");
 
-            //Img_Content.Visibility = ViewStates.Gone;
-            //PrB_LoadingPicture.Visibility = ViewStates.Visible;
+            Img_Content.Visibility = ViewStates.Gone;
+            PrB_LoadingPicture.Visibility = ViewStates.Visible;
 
             //Öffnen des WebClients
             using (WebClient client = new WebClient())
             {
                 //Öffnen des ProgressDialogs
-                progressDialog.Show();
+                //progressDialog.Show();
 
                 //Herunterladen des Bilds als Byte-Array
                 byte[] bild = await client.DownloadDataTaskAsync($"http://placeimg.com/{breite}/{hoehe}/any");
@@ -83,13 +83,13 @@ namespace X_Android
 
                 //Setzen des Bildes in den ImageView
                 Img_Content.SetImageBitmap(bitmap);
-
+                            
                 //Schließen des ProgressDialogs
-                progressDialog.Dismiss();
+                //progressDialog.Dismiss();
             };
 
-            //PrB_LoadingPicture.Visibility = ViewStates.Gone;
-            //Img_Content.Visibility = ViewStates.Visible;
+            PrB_LoadingPicture.Visibility = ViewStates.Gone;
+            Img_Content.Visibility = ViewStates.Visible;
         }
     }
 }

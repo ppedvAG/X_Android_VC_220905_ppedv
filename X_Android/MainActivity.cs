@@ -21,6 +21,7 @@ namespace X_Android
         public Button Btn_Ok { get; set; }
         public Button Btn_Google { get; set; }
         public Button Btn_ShowPicture { get; set; }
+        public Button Btn_Todo { get; set; }
 
         //Methode, welche beim Starten (Initialisieren) der Activity ausgeführt wird
         protected override void OnCreate(Bundle savedInstanceState)
@@ -62,7 +63,9 @@ namespace X_Android
             Intent expliziterIntent = new Intent(this, typeof(ShowPictureActivity));
             //Zuweisung des Click-Events
             Btn_ShowPicture.Click += (s,e) => StartActivity(expliziterIntent);
-        
+
+            Btn_Todo = FindViewById<Button>(Resource.Id.activity_main_Btn_Todo);
+            Btn_Todo.Click += (s, e) => StartActivity(new Intent(this, typeof(ToDoActivity)));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
